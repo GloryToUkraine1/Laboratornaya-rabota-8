@@ -8,12 +8,9 @@ public class URLDepthPair {
 	public static final String URL_PREFIX = "http://";
 	public static final int MAX_DEPTH_VALUE = 100;
 	
-	/*
-	* Конструктор. Выбрасывает исключения, если захочет
-	*/
+
 	public URLDepthPair(String url, int depth) throws MalformedURLException {
 		
-		// Проверка валидности введенных параметров, и выброс соответствующих исключений
 		
 		if (depth < 0 || depth > MAX_DEPTH_VALUE) {
 			throw new IllegalArgumentException("Error limits of depth");
@@ -29,7 +26,7 @@ public class URLDepthPair {
 	}
 	
 	/*
-	* Поверяет префикс URL на соответствие протоколу HTTP
+	* Проверяет префикс URL на соответствие протоколу HTTP
 	*/	
 	public static boolean isHttpPrefixInURL(String url) {
 		if (!url.startsWith(URL_PREFIX)) return false;
@@ -37,23 +34,17 @@ public class URLDepthPair {
 	}
 	
 	/*
-	* Поверяет глубину на превышение лимита
+	* Проверяет глубину на превышение лимита
 	*/	
 	public static boolean isDepthAboveLimit(int depth) {
 		if (depth > MAX_DEPTH_VALUE) return true;
 		return false;
 	}
 	
-	/*
-	* Переопределение toString();
-	*/
 	public String toString() {
 		return new String("[ " + this.url + ", " + this.depth + " ]");
 	}
 	
-	/* 
-	* Получение параметров
-	*/
 	public String getHostName() {
 		try {
             URL url = new URL(this.url);
