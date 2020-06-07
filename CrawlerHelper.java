@@ -30,7 +30,7 @@ public class CrawlerHelper {
 		
 		URLDepthPair urlDepth;
 		
-		// Вызов конструктора класса конструктором класса (вызовается, если не понравится какой-либо параметр)
+		// Вызов конструктора класса конструктором класса
 		try {
 			urlDepth = new URLDepthPair(args[0], depth);
 		} 
@@ -183,10 +183,6 @@ public class CrawlerHelper {
 		
 	}
 	
-	/*
-	* Обработка строк ссылочного тэга <a href=...>
-	*/
-	// Выделение ссылки из текста тэга
 	public static String getURLFromHTMLTag(String line) {
 		if (line.indexOf(Crawler.HOOK_REF) == -1) return null;
 		
@@ -200,10 +196,6 @@ public class CrawlerHelper {
 		return line.substring(indexStart, indexEnd);
 	}
 	
-	// Очищает от мусора после адреса
-	// После определяет, указана ли ссылка в формате конечного файла, если да
-	// То из адреса вырезается имя файла с расширением
-	// То есть остается лишь каталог, в котором находится этот файл
 	public static String cutURLEndFormat(String url) {
 		//System.out.println("Before cutTrash for cut format " + url);
 		url = CrawlerHelper.cutTrashAfterFormat(url);
