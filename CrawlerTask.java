@@ -16,14 +16,11 @@ public class CrawlerTask implements Runnable {
     /** Запуск заданий CrawlerTasks */
     public void run() {
 
-		// Поток получает следующих элемент из списка непросмотренных
-		// адресов или входит в режим ожидания
         element = myPool.get();
         
         // Глубина текущего элемента
         int myDepth = element.getDepth();
         
-        // Получение всех ссылок после парсинга
         LinkedList<URLDepthPair> linksList = new LinkedList<URLDepthPair>();
         linksList = Crawler.parsePage(element);
         
